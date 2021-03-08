@@ -4,29 +4,23 @@ menuOpen = nil
 Citizen.CreateThread(function()
 	while ESX == nil do
 		TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
-
 		Citizen.Wait(0)
  end
 end)
 
-
 Citizen.CreateThread(function()
     while true do
-        Citizen.Wait(0)
-       
-       local ped = GetPlayerPed(-1)       
-       local playerCoords  =  GetEntityCoords(ped)
-       local TruckId       =  GetVehiclePedIsIn(ped, false)
-       local driverPed                   = GetPedInVehicleSeat(TruckId, -1)
+        Citizen.Wait(0)       
+         local ped = GetPlayerPed(-1)       
+         local playerCoords  =  GetEntityCoords(ped)
+         local TruckId       =  GetVehiclePedIsIn(ped, false)
+         local driverPed                   = GetPedInVehicleSeat(TruckId, -1)
  
- if IsControlJustPressed(0, Config.Key) and GetPedInVehicleSeat(TruckId, -1) == ped then 
-                          
-                           Speedlimiter()
-
+ if IsControlJustPressed(0, Config.Key) and GetPedInVehicleSeat(TruckId, -1) == ped then                           
+           Speedlimiter()
       end
     end
 end)
-
 
 function Speedlimiter() 
    menuOpen = true
@@ -46,30 +40,28 @@ function Speedlimiter()
 
  if not IsPedInAnyBoat(GetPlayerPed(-1)) and not IsPedInAnyPlane(GetPlayerPed(-1)) and not IsPedInAnyHeli(GetPlayerPed(-1)) then
 
-   ESX.UI.Menu.Open(
-		'default', GetCurrentResourceName(), 'startmenu',
+   ESX.UI.Menu.Open('default', GetCurrentResourceName(), 'startmenu',
 		{
 			title    = '🚦Speedlimiter',
 			align    = 'top-right',
 			elements = {
-                                                                {label = 'Reset Speed', value = 'click9'},
+                                {label = 'Reset Speed', value = 'click9'},
 				--{label = 'Set at 15 MPH', value = 'click1'},
 				{label = 'Set at 25 MPH', value = 'click2'},
 				{label = 'Set at 35 MPH', value = 'click3'},
 				{label = 'Set at 45 MPH', value = 'click4'},
 				{label = 'Set at 55 MPH', value = 'click5'},
-        {label = 'Set at 65 MPH', value = 'click6'},
-        {label = 'Set at 75 MPH', value = 'click7'},
-        {label = 'Set at 100 MPH', value = 'click8'},
-        {label = 'Close', value = 'closemenu'}
+                                {label = 'Set at 65 MPH', value = 'click6'},
+                                {label = 'Set at 75 MPH', value = 'click7'},
+                                {label = 'Set at 100 MPH', value = 'click8'},
+                                {label = 'Close', value = 'closemenu'}
 			}
 		},
 		function(data, menu)
-                               if data.current.value == 'click1' then
-		
-				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			                SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed1/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed1..' ~w~MPH') 
+                               if data.current.value == 'click1' then		
+				 PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+			         SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed1/speeddivider )
+                                 ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed1..' ~w~MPH') 
                               
                                                  
 			end
@@ -77,7 +69,7 @@ function Speedlimiter()
 		
 				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
 				SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed2/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed2..' ~w~MPH') 
+                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed2..' ~w~MPH') 
                                                  
 			
                                               end
@@ -85,60 +77,58 @@ function Speedlimiter()
 				
 				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
 				SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed3/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed3..' ~w~MPH') 
+                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed3..' ~w~MPH') 
 			end
 		if data.current.value == 'click4' then
 				
 				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
 				SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed4/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed4..' ~w~MPH') 
+                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed4..' ~w~MPH') 
 			end
 		if data.current.value == 'click5' then
 				
-				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-				SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed5/speeddivider )
-                                                                 ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed5..' ~w~MPH') 
+				  PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+				  SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed5/speeddivider )
+                                  ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed5..' ~w~MPH') 
                        		end
                                if data.current.value == 'click6' then
 				
-				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			                SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed6/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed6..' ~w~MPH') 
+				  PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+			          SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false), speed6/speeddivider )
+                                  ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed6..' ~w~MPH') 
                        		end
                                 if data.current.value == 'click7' then
 				
-				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			                SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed7/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed7..' ~w~MPH') 
+				  PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+			          SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed7/speeddivider )
+                                  ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed7..' ~w~MPH') 
                        		end
                                 if data.current.value == 'click8' then
 				
-				PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			                SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed8/speeddivider )
-                                                                ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed8..' ~w~MPH') 
+				  PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+			          SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed8/speeddivider )
+                                  ESX.ShowNotification('~b~Maximum~w~ speed set to ~y~'..speed8..' ~w~MPH') 
 
                        		end
                                 if data.current.value == 'click9' then
 				
-			               PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
-			               SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed9/speeddivider )
-                                                               ESX.ShowNotification('~g~SUCCESS ~w~: Maximum speed has been ~r~reset!')
+			          PlaySoundFrontend(-1, 'NAV', 'HUD_AMMO_SHOP_SOUNDSET', false)
+			          SetEntityMaxSpeed(GetVehiclePedIsIn(ped, false),  speed9/speeddivider )
+                                  ESX.ShowNotification('~g~SUCCESS ~w~: Maximum speed has been ~r~reset!')
 
                        		end
-		if data.current.value == 'closemenu' then
-                                                              ESX.UI.Menu.CloseAll()
-			end
-      menuOpen = nil
-			menu.close()
-		end,
-    function(data, menu)
-      menuOpen = nil
-			menu.close()
-    end)
-   
-end
-
-end
+	                   	if data.current.value == 'closemenu' then
+                                   ESX.UI.Menu.CloseAll()
+			        end
+                                menuOpen = nil
+			        menu.close()
+		                end,
+                            function(data, menu)
+                                menuOpen = nil
+			        menu.close()
+                            end) 
+	                   end
+                          end
 
 Citizen.CreateThread(function() -- Driver Ped no Drive By
  while true do
@@ -148,7 +138,7 @@ Citizen.CreateThread(function() -- Driver Ped no Drive By
     local driverPed         = GetPedInVehicleSeat(TruckId , -1)
     local TruckId   	    =  GetVehiclePedIsIn(ped, false)
 
-if TruckId and GetPedInVehicleSeat(TruckId, -1) ==  ped then
+if TruckId and GetPedInVehicleSeat(TruckId, -1) == ped then
  
              if Config.NoWeaponWheel then
                 SetCurrentPedWeapon(ped,GetHashKey("WEAPON_UNARMED"),true)
@@ -168,7 +158,11 @@ if TruckId and GetPedInVehicleSeat(TruckId, -1) ==  ped then
              if menuOpen then
                  DisableControlAction(0, 42, true) 
                  DisableControlAction(0, 43, true) 
-   end               
+	    			     
+   end \
+ elseif not TruckId and not GetPedInVehicleSeat(TruckId, -1) == ped then
+			menuOpen = nil	
+                        ESX.UI.Menu.CloseAll()						
   end
  end
 end)
@@ -184,7 +178,7 @@ TriggerEvent('chat:addSuggestion', '/cam.on', 'Turn On or Unlock Cinematic Cam',
 RegisterCommand("cam.off", function()
  
   local ped        = GetPlayerPed(-1)
-  local TruckId   	    =  GetVehiclePedIsIn(ped, false)
+  local TruckId    =  GetVehiclePedIsIn(ped, false)
 
 N_0x5db8010ee71fdef2(TruckId)
 SetFollowPedCamViewMode(1)
