@@ -46,7 +46,7 @@ function Speedlimiter()
 			align    = 'top-right',
 			elements = {
                                 {label = 'Reset Speed', value = 'click9'},
-				--{label = 'Set at 15 MPH', value = 'click1'},
+				{label = 'Set at 15 MPH', value = 'click1'},
 				{label = 'Set at 25 MPH', value = 'click2'},
 				{label = 'Set at 35 MPH', value = 'click3'},
 				{label = 'Set at 45 MPH', value = 'click4'},
@@ -177,7 +177,7 @@ RegisterCommand("cam.off", function()
   local ped        = GetPlayerPed(-1)
   local TruckId    =  GetVehiclePedIsIn(ped, false)
 
-N_0x5db8010ee71fdef2(TruckId)
+
 SetFollowPedCamViewMode(1)
 ESX.ShowNotification('~b~Vehicle Cam :~y~ OFF') 
  Citizen.Wait(30)
