@@ -159,10 +159,7 @@ if TruckId and GetPedInVehicleSeat(TruckId, -1) == ped then
                  DisableControlAction(0, 42, true) 
                  DisableControlAction(0, 43, true) 
 	    			     
-   end \
- elseif not TruckId and not GetPedInVehicleSeat(TruckId, -1) == ped then
-			menuOpen = nil	
-                        ESX.UI.Menu.CloseAll()						
+   end 			
   end
  end
 end)
